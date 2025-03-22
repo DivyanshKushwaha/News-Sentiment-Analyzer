@@ -50,7 +50,7 @@ Navigate to Google Cloud Console -> Create a new project and enable the Text-to-
 Go to Hugging Face Spaces and select Docker as the runtime environment.
 
 - Add Secrets
-    Navigate to the Settings tab and add the following secrets:
+    Navigate to the Settings tab in HF space and add the following secrets:
 
     - **GROQ_API_KEY**: API Key for ChatGroq LLM.
 
@@ -62,9 +62,17 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
 ```bash 
 git clone https://huggingface.co/spaces/<user_name>/<space_name>
 ```
+- Expected structure just after cloning repository in Local machine
+```bash
+<space_name>/
+    |__ .gitattributes
+    |__ README.md
+```
 
-### Structure in cloned repository
+#### Step 4: Open the VSCode or any code editor in this directory (in 'space_name' directory)
+- Open terminal in 'space_name' directory.
 
+#### Step 5: Now create the files structure like shown below
 ```bash
 <space_name>/
     |__ .gitattributes
@@ -77,9 +85,11 @@ git clone https://huggingface.co/spaces/<user_name>/<space_name>
     |__ requirements.txt
 ```
 
+
 ### How files are working
 
-- **1. .env**  To store environment variables like API keys, Tokens etc.
+- **1. .gitignore**  
+    To mention files or scripts you don't want to push it in hugging face space.
 
 - **2. utils.py** 
 
@@ -108,8 +118,6 @@ git clone https://huggingface.co/spaces/<user_name>/<space_name>
         - /generateSummary: Creates and serves a detailed sentiment summary.
         - /downloadJson: Serves the JSON summary file for download.
         - /downloadHindiAudio: Serves the Hindi audio file for download.
-
-
 
 - **3. app.py**
 

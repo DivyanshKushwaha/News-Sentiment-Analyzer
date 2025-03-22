@@ -4,16 +4,16 @@ Welcome to the News Sentiment Analyzer! This repository contains an application 
 This guide will provide step-by-step instructions on setting up, running, and using the application, along with insights into the underlying architecture and functionality.
 
 ### Features
-- 1. News Extraction
+- News Extraction
 The application scrapes news articles for the specified company from Economic Times using BeautifulSoup.
 
-- 2. Sentiment Analysis
+- Sentiment Analysis
 Sentiment analysis of news articles is performed using pre-trained models from Hugging Face. Each article is classified as Positive, Negative, or Neutral.
 
-- 3. Topic Extraction
+- Topic Extraction
 Using Hugging Face topic classification models, the application identifies common themes across articles.
 
-- 4. Audio Summarization
+- Audio Summarization
 A concise sentiment summary is translated into Hindi and converted into audio using Google Cloud TTS. Users can download and play the audio file directly from the application.
 
 
@@ -30,26 +30,26 @@ A concise sentiment summary is translated into Hindi and converted into audio us
 
 #### Step 2: Setting Up Google Cloud for Text-to-Speech
 
-- 1. Create a Google Cloud Project 
+- Create a Google Cloud Project 
 Navigate to Google Cloud Console -> Create a new project and enable the Text-to-Speech API.
 
-- 2. Generate Service Account Credentials
+- Generate Service Account Credentials
     - Go to IAM & Admin → Service Accounts.
 
     - Create a new service account and assign the Text-to-Speech Admin role.
 
     - Generate a JSON key file and download it.
 
-- 3. Set Environment Variables
+- Set Environment Variables
     - Extract **PRIVATE_KEY** and **CLIENT_EMAIL** from the JSON file and store them securely. These will later be set as secrets in Hugging Face Spaces.
-    - **CLIENT_EMAIL**: Your gcp client email (can be found in .json file after creating keys in service accounts in google cloud )
-    - **PRIVATE_KEY**: Format like- "-----BEGIN PRIVATE KEY-----\nMhA==\n-----END PRIVATE KEY-----\n" (Actual key is very long text, this is just for example)
+    - **CLIENT_EMAIL**: Your gcp client email, can be found in .json file after creating keys in service accounts in google cloud.
+    - **PRIVATE_KEY**: Format like- ```bash "-----BEGIN PRIVATE KEY-----\nMhA==\n-----END PRIVATE KEY-----\n" ``` (Actual key is very long text, this is just for example)
 
 #### Step 3: Preparing Hugging Face Spaces
-- 1. Create a New Space
+- Create a New Space
 Go to Hugging Face Spaces and select Docker as the runtime environment.
 
-- 2. Add Secrets
+- Add Secrets
     Navigate to the Settings tab and add the following secrets:
 
     - **GROQ_API_KEY**: API Key for ChatGroq LLM.
@@ -58,7 +58,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
 
     - **CLIENT_EMAIL**: Service account email.
 
-3. Clone the repository created  with space
+- Clone the repository created  with space
 ```bash 
 git clone https://huggingface.co/spaces/<user_name>/<space_name>
 ```

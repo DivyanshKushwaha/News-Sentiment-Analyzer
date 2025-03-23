@@ -1,7 +1,5 @@
 ## News Sentiment Analyzer
-Welcome to the News Sentiment Analyzer! This repository contains an application that extracts news articles for a specific company, analyzes their sentiment, identifies key topics, and provides insightful summaries. Additionally, it generates audio summaries in Hindi using Google Cloud Text-to-Speech (TTS). The application is deployed on Hugging Face Spaces for easy access and scalability.
-
-This guide will provide step-by-step instructions on setting up, running, and using the application, along with insights into the underlying architecture and functionality.
+This repository contains an application that extracts news articles for a specific company, analyzes their sentiment, identifies key topics, and provides insightful summaries. Additionally, it generates audio summaries in Hindi using Google Cloud Text-to-Speech (TTS). The application is deployed on Hugging Face Spaces for easy access and scalability.
 
 ### Features
 - News Extraction
@@ -134,8 +132,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
 
             ```bash
             Parameters: company_name (Query): Name of the company to analyze.
-            Usage (via Postman):
-            Set the method to POST and URL to: http://127.0.0.1:8000/generateSummary?company_name=Microsoft
+            Usage (POST via Postman): http://127.0.0.1:8000/generateSummary?company_name=Microsoft
             Response:
                 {
                 "Company": "Microsoft",

@@ -190,7 +190,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
         bash
         pip install -r requirements.txt
         ```
-    - Set Up Google Cloud TTS Credentials and all APIs as mentioned in above (In setup Guide)
+    - Create a .env file and set Up Google Cloud TTS Credentials and all APIs in it (See .env.example for reference)
 
     - Start the Backend (FastAPI)
         ```bash
@@ -203,6 +203,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
             ```bash
             streamlit run app.py
             ```
+        - App will run locally on port 8501 
 
 - #### To Run the App on Hugging Face Spaces
 

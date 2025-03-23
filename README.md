@@ -154,11 +154,11 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
             ```bash
             Usage: Access http://127.0.0.1:8000/downloadHindiAudio.
             Handles Text-to-Speech: Uses Google Cloud TTS API to generate Hindi audio summaries.
-                ```bash
+
                 client = texttospeech.TextToSpeechClient(credentials=credentials)
                 input_text = texttospeech.SynthesisInput(text=hindi_text)
                 response = client.synthesize_speech(input=input_text, voice=voice, audio_config=audio_config)
-                ```
+
 
             ```
 

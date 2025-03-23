@@ -58,26 +58,9 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
 
     - **CLIENT_EMAIL**: Service account email.
 
-- Clone the repository created  with space
-```bash 
-git clone https://huggingface.co/spaces/<user_name>/<space_name>
-```
-- Expected structure just after cloning repository in Local machine
-```bash
-<space_name>/
-    |__ .gitattributes
-    |__ README.md
-```
 
-#### Step 4: Open the VSCode or any code editor in this directory (in 'space_name' directory)
-- Open terminal in 'space_name' directory.
-- Open any code editor in your directory.
-- Example of powershell opening VS code from terminal in the cloned repo directory:
-```bash
-(base) PS D:\Projects\space_name>  code .
-```
+### Project Structure
 
-#### Step 5: Now create the files structure like shown below
 ```bash
 <space_name>/
     |__ .gitattributes
@@ -92,44 +75,92 @@ git clone https://huggingface.co/spaces/<user_name>/<space_name>
     |__ requirements.txt
 
 ```
-#### Step 6: Copy the code of the files from this repository.
-- Copy the code of these files from this repository to your spaces repository files.
-
-
 ### How files are working
 
 - **1. .gitignore**  
     To mention files or scripts you don't want to push it in your hugging face space.
 
-- **2. utils.py** 
+- **2. utils.py (LLM Models Implementation)** 
 
     This file contains the core utility functions that enable the application to extract, analyze, and summarize news data:
 
-    - extract_titles_and_summaries: Scrapes with Economic Times for news articles about the company and extracts their titles and summaries with the help of **BeautifulSoup**.
+    - extract_titles_and_summaries: 
+        - Scrapes news about the company from Economic Times website.
+        - Extracts their titles and summaries with the help of **BeautifulSoup**.
 
-    - perform_sentiment_analysis: Utilizes Hugging Face's sentiment analysis model ```tabularisai/multilingual-sentiment-analysis``` to classify articles into Positive, Negative, or Neutral.
+    - perform_sentiment_analysis:
+        - Utilizes Hugging Face's sentiment analysis model ```tabularisai/multilingual-sentiment-analysis```
+        - Classifies articles into Positive, Negative, or Neutral.
+        - Code example:
+            ```bash
+            from transformers import pipeline
+            pipe = pipeline("text-classification", model="tabularisai/multilingual-sentiment-analysis", device=1)
+            sentiment_result = pipe(content)[0]
+            ```
 
-    - extract_topics_with_hf: Identifies topics from articles using Hugging Face's topic classification model ```valurank/distilroberta-topic-classification```.
+    - extract_topics_with_hf: 
+        - Uses Hugging Face's topic classification model ```valurank/distilroberta-topic-classification```
+        - Identifies topics from articles.
+        - Code example:
+            ```bash
+            topic_pipe = pipeline("text-classification", model="valurank/distilroberta-topic-classification", device=1)
+            topics_result = topic_pipe(content, top_k=3)
+            ```
 
-    - compare_articles: Compares articles based on sentiment variations and identifies common themes, preparing high-level insights about the company's public perception.
+    - compare_articles:
+        - Compares articles based on sentiment variations and identifies common themes, 
+        - Prepare high-level insights about the company's public perception.
 
-    - generate_final_sentiment: Summarizes the sentiment analysis results and provides an overview of implications for the company's reputation and market performance.
+    - generate_final_sentiment: 
+        - Summarizes the sentiment analysis results.
+        - Uses LLM model ```llama-3.1-8b-instant``` from **GroqAI**
+        - Code example:
+            ```bash 
+                llm = ChatGroq(api_key=GROQ_API_KEY, model="llama-3.1-8b-instant")
+                response = llm.invoke([HumanMessage(content=prompt)], max_tokens=200)
+            ```
 
-- **2. api.py** 
+- **2. api.py (API Development)** 
 
-    - It serves as the backbone for data processing and secure interactions between the backend and frontend.
-    - This file builds the backend using FastAPI to serve the application's functionalities:
+    - It serves as the backbone for interactions between the backend and frontend, builds the backend using FastAPI.
+    - Orchestrates the utility functions to process and analyze news articles.
+    - API Endpoints:
+        - Home (GET /) : Welcome Endpoint
+            ```bash
+            {"message": "Welcome to the Company Sentiment API"}
+            ```
 
-    - Integrates utils.py: Orchestrates the utility functions to process and analyze news articles.
+        - Generate Summary (POST /generateSummary): Processes articles, performs sentiment analysis, and generates summaries.
 
-    - Handles Text-to-Speech: Uses Google Cloud TTS API to generate Hindi audio summaries and Ensures smooth integration of private keys and credentials using environment variables.
+            ```bash
+            Parameters: company_name (Query): Name of the company to analyze.
+            Usage (via Postman):
+            Set the method to POST and URL to: http://127.0.0.1:8000/generateSummary?company_name=Microsoft
+            Response:
+                {
+                "Company": "Microsoft",
+                "Articles": [...],
+                "Comparative Sentiment Score": {...},
+                "Final Sentiment Analysis": "Positive sentiment overall...",
+                "Audio": "hindi_summary.mp3"
+                }
+
+            ```
+    - Handles Text-to-Speech: 
+        - Uses Google Cloud Text-To-Speech model API to generate Hindi audio summaries.
+        - Code example:
+            ```bash
+            client = texttospeech.TextToSpeechClient(credentials=credentials)
+            input_text = texttospeech.SynthesisInput(text=hindi_text)
+            response = client.synthesize_speech(input=input_text, voice=voice, audio_config=audio_config)
+            ```
 
     - Defines API Routes:
         - /generateSummary: Creates and serves a detailed sentiment summary.
         - /downloadJson: Serves the JSON summary file for download.
         - /downloadHindiAudio: Serves the Hindi audio file for download.
 
-- **3. app.py**
+- **3. app.py (UI Development)**
 
 - This file transforms the processed data into an easy-to-use and visually appealing interface for users.
 - This file builds the user interface using Streamlit:

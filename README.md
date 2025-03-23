@@ -178,7 +178,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
 
 ### Usage and Installation
 
-#### To run Locally
+- #### To run Locally
 
 - Clone the Repository
     ```bash
@@ -204,7 +204,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
         streamlit run app.py
         ```
 
-### To Run the App on Hugging Face Spaces
+- #### To Run the App on Hugging Face Spaces
 
 - Setup the Hugging Face Space (Read Setup Guide)
 

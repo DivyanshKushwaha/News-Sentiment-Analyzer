@@ -164,18 +164,51 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
 
 - **3. app.py (UI Development)**
 
-- This file transforms the processed data into an easy-to-use and visually appealing interface for users.
-- This file builds the user interface using Streamlit:
-    - Company Input: Users enter the company name to analyze sentiment.
-    - Dynamic Visualization: Displays articles, sentiment scores, key topics, and sentiment distribution in an organized format.
-    - Download Options: Provides buttons to download the JSON summary and Hindi audio file.
-    - Plays Audio: Enables users to play the generated Hindi audio directly within the application.
+    - This file builds the user interface using Streamlit:
+        - Dynamic Visualization: Displays articles, sentiment scores, key topics, and sentiment distribution in an organized format.
+        - Download Options: Provides buttons to download the JSON summary and Hindi audio file.
+        - Plays Audio: Enables users to play the generated Hindi audio directly within the application.
 
 - **4. Dockerfile**
 
-    - The Dockerfile ensures smooth deployment and execution of the application on Hugging Face Spaces.
     - The Dockerfile containerizes the entire application for deployment:
         - Installs Dependencies: Sets up Python environment and installs all required libraries.
         - Defines Execution Commands: Starts the FastAPI backend on port 8000 and Launches the Streamlit frontend on port 7860.
-        - Facilitates Scalability: Ensures compatibility with Hugging Face Spaces and any Docker-enabled platform.
+
+
+### Usage and Installation
+
+#### To run Locally
+
+- Clone the Repository
+    ```bash
+    git clone https://github.com/your-repo/news-sentiment-analyzer.git
+    cd news-sentiment-analyzer
+    ```
+2. Install Python Dependencies
+    ```
+    bash
+    pip install -r requirements.txt
+    ```
+3. Set Up Google Cloud TTS Credentials and all APIs as mentioned in above (In setup Guide)
+
+4. Start the Backend (FastAPI)
+    ```bash
+    python backend/api.py
+    ```
+
+5. Start the Frontend (Streamlit)
+    - First change the BASE_URL in app.py : ```BASE_URL = http://127.0.0.1:8000```
+    - Then run the frontend app
+        ```bash
+        streamlit run app.py
+        ```
+
+
+### Third-Party API Usage
+- Hugging Face Models: Download pre-trained models from Hugging Face using transformers library.
+
+- Google Cloud Text-to-Speech: Generate hindi audio summaries.
+
+- GroqAI LLM Model: To summarize the sentiments of articles.
 

@@ -198,7 +198,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
         ```
 
     - Start the Frontend (Streamlit)
-        - First change the BASE_URL in app.py : ```BASE_URL = http://127.0.0.1:8000```
+        - First change the BASE_URL in app.py, put this BASE_URL : ```BASE_URL = http://127.0.0.1:8000```
         - Then run the frontend app
             ```bash
             streamlit run app.py

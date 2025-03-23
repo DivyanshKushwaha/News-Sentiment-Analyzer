@@ -43,7 +43,7 @@ Navigate to Google Cloud Console -> Create a new project and enable the Text-to-
 - Set Environment Variables
     - Extract **PRIVATE_KEY** and **CLIENT_EMAIL** from the JSON file and store them securely. These will later be set as secrets in Hugging Face Spaces.
     - **CLIENT_EMAIL**: Your gcp client email, can be found in .json file after creating keys in service accounts in google cloud.
-    - **PRIVATE_KEY**: Format like- ```bash "-----BEGIN PRIVATE KEY-----\nMhA==\n-----END PRIVATE KEY-----\n" ``` (Actual key is very long text, this is just for example)
+    - **PRIVATE_KEY**: Format like- ```"-----BEGIN PRIVATE KEY-----\nMhA==\n-----END PRIVATE KEY-----\n" ``` (Actual key is very long text, this is just for example)
 
 #### Step 3: Preparing Hugging Face Spaces
 - Create a New Space
@@ -71,25 +71,35 @@ git clone https://huggingface.co/spaces/<user_name>/<space_name>
 
 #### Step 4: Open the VSCode or any code editor in this directory (in 'space_name' directory)
 - Open terminal in 'space_name' directory.
+- Open any code editor in your directory.
+- Example of powershell opening VS code from terminal in the cloned repo directory:
+```bash
+(base) PS D:\Projects\space_name>  code .
+```
 
 #### Step 5: Now create the files structure like shown below
 ```bash
 <space_name>/
     |__ .gitattributes
     |__ .gitignore
-    |__ api.py
-    |__ app.py
-    |__ utils.py
+    |__ backend
+    |       |__ api.py
+    |       |__ utils.py
+    |__ frontend
+    |       |__ app.py
     |__ Dockerfile
     |__ README.md
     |__ requirements.txt
+
 ```
+#### Step 6: Copy the code of the files from this repository.
+- Copy the code of these files from this repository to your spaces repository files.
 
 
 ### How files are working
 
 - **1. .gitignore**  
-    To mention files or scripts you don't want to push it in hugging face space.
+    To mention files or scripts you don't want to push it in your hugging face space.
 
 - **2. utils.py** 
 

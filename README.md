@@ -218,7 +218,7 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
         - requirements.txt
 
     - Hugging Face will automatically deploy the application using the Dockerfile
-
+    - App will run on port 7860
     - Test the Application by accessing Space’s URL provided by Hugging Face.
 
 ### Third-Party API Usage

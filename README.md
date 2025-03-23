@@ -143,19 +143,24 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
                 }
 
             ```
-    - Handles Text-to-Speech: 
-        - Uses Google Cloud Text-To-Speech model API to generate Hindi audio summaries.
-        - Code example:
+
+        - Download JSON (GET /downloadJson): Downloads the JSON summary.
             ```bash
-            client = texttospeech.TextToSpeechClient(credentials=credentials)
-            input_text = texttospeech.SynthesisInput(text=hindi_text)
-            response = client.synthesize_speech(input=input_text, voice=voice, audio_config=audio_config)
+            Usage: Access http://127.0.0.1:8000/downloadJson.
             ```
 
-    - Defines API Routes:
-        - /generateSummary: Creates and serves a detailed sentiment summary.
-        - /downloadJson: Serves the JSON summary file for download.
-        - /downloadHindiAudio: Serves the Hindi audio file for download.
+        - Download Hindi Audio (GET /downloadHindiAudio): Downloads the Hindi audio summary.
+
+            ```bash
+            Usage: Access http://127.0.0.1:8000/downloadHindiAudio.
+            Handles Text-to-Speech: Uses Google Cloud TTS API to generate Hindi audio summaries.
+                ```bash
+                client = texttospeech.TextToSpeechClient(credentials=credentials)
+                input_text = texttospeech.SynthesisInput(text=hindi_text)
+                response = client.synthesize_speech(input=input_text, voice=voice, audio_config=audio_config)
+                ```
+
+            ```
 
 - **3. app.py (UI Development)**
 

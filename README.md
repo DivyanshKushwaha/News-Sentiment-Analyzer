@@ -221,9 +221,9 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
     - Test the Application by accessing Space’s URL provided by Hugging Face.
 
 ### Third-Party API Usage
-- Hugging Face Models: Download pre-trained models from Hugging Face using transformers library.
+- **Hugging Face**: To download and use pre-trained models from Hugging Face using transformers library.
 
-- Google Cloud Text-to-Speech: Generate hindi audio summaries.
+- **Google Cloud Text-to-Speech**: To Generate hindi audio summaries.
 
-- GroqAI LLM Model: To summarize the sentiments of articles.
+- **GroqAI LLM Model**: To summarize the sentiments of articles.
 

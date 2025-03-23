@@ -180,45 +180,45 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
 
 - #### To run Locally
 
-- Clone the Repository
-    ```bash
-    git clone https://github.com/your-repo/news-sentiment-analyzer.git
-    cd news-sentiment-analyzer
-    ```
-2. Install Python Dependencies
-    ```
-    bash
-    pip install -r requirements.txt
-    ```
-3. Set Up Google Cloud TTS Credentials and all APIs as mentioned in above (In setup Guide)
-
-4. Start the Backend (FastAPI)
-    ```bash
-    python backend/api.py
-    ```
-
-5. Start the Frontend (Streamlit)
-    - First change the BASE_URL in app.py : ```BASE_URL = http://127.0.0.1:8000```
-    - Then run the frontend app
+    - Clone the Repository
         ```bash
-        streamlit run app.py
+        git clone https://github.com/your-repo/news-sentiment-analyzer.git
+        cd news-sentiment-analyzer
         ```
+    - Install Python Dependencies
+        ```
+        bash
+        pip install -r requirements.txt
+        ```
+    - Set Up Google Cloud TTS Credentials and all APIs as mentioned in above (In setup Guide)
+
+    - Start the Backend (FastAPI)
+        ```bash
+        python backend/api.py
+        ```
+
+    - Start the Frontend (Streamlit)
+        - First change the BASE_URL in app.py : ```BASE_URL = http://127.0.0.1:8000```
+        - Then run the frontend app
+            ```bash
+            streamlit run app.py
+            ```
 
 - #### To Run the App on Hugging Face Spaces
 
-- Setup the Hugging Face Space (Read Setup Guide)
+    - Setup the Hugging Face Space (Read Setup Guide)
 
-- Upload the following project files to the created Space:
+    - Upload the following project files to the created Space:
 
-    - utils.py
-    - api.py
-    - app.py
-    - Dockerfile
-    - requirements.txt
+        - utils.py
+        - api.py
+        - app.py
+        - Dockerfile
+        - requirements.txt
 
-- Hugging Face will automatically deploy the application using the Dockerfile
+    - Hugging Face will automatically deploy the application using the Dockerfile
 
-- Test the Application by accessing Space’s URL provided by Hugging Face.
+    - Test the Application by accessing Space’s URL provided by Hugging Face.
 
 ### Third-Party API Usage
 - Hugging Face Models: Download pre-trained models from Hugging Face using transformers library.

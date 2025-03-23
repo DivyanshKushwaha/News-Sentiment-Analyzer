@@ -204,6 +204,21 @@ Go to Hugging Face Spaces and select Docker as the runtime environment.
         streamlit run app.py
         ```
 
+### To Run the App on Hugging Face Spaces
+
+- Setup the Hugging Face Space (Read Setup Guide)
+
+- Upload the following project files to the created Space:
+
+    - utils.py
+    - api.py
+    - app.py
+    - Dockerfile
+    - requirements.txt
+
+- Hugging Face will automatically deploy the application using the Dockerfile
+
+- Test the Application by accessing Space’s URL provided by Hugging Face.
 
 ### Third-Party API Usage
 - Hugging Face Models: Download pre-trained models from Hugging Face using transformers library.

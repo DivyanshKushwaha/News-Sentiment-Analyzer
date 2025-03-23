@@ -95,11 +95,11 @@ git clone https://huggingface.co/spaces/<user_name>/<space_name>
 
     This file contains the core utility functions that enable the application to extract, analyze, and summarize news data:
 
-    - extract_titles_and_summaries: Scrapes Economic Times for news articles about the company and extracts their titles and summaries.
+    - extract_titles_and_summaries: Scrapes with Economic Times for news articles about the company and extracts their titles and summaries with the help of **BeautifulSoup**.
 
-    - perform_sentiment_analysis: Utilizes Hugging Face's sentiment analysis model to classify articles into Positive, Negative, or Neutral.
+    - perform_sentiment_analysis: Utilizes Hugging Face's sentiment analysis model ```tabularisai/multilingual-sentiment-analysis``` to classify articles into Positive, Negative, or Neutral.
 
-    - extract_topics_with_hf: Identifies topics from articles using Hugging Face's topic classification model.
+    - extract_topics_with_hf: Identifies topics from articles using Hugging Face's topic classification model ```valurank/distilroberta-topic-classification```.
 
     - compare_articles: Compares articles based on sentiment variations and identifies common themes, preparing high-level insights about the company's public perception.
 
